@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sun.glass.ui.Application;
-
 @Controller
 @RequestMapping("/ex03")
 public class Exam03Controller {
@@ -25,8 +23,9 @@ public class Exam03Controller {
 	@RequestMapping("/buy")
 	public String buy(Integer item1, Integer item2, Integer item3) {
 		int totalPrice = item1 + item2 + item3;
+		int totalPriceWithTax = (int)(totalPrice * tax);
 		application.setAttribute("totalPrice", totalPrice);
-		application.setAttribute("totalPriceWithTax", (int)(totalPrice * tax));		
+		application.setAttribute("totalPriceWithTax", totalPriceWithTax);		
 		return "exam03-result";
 	}
 
